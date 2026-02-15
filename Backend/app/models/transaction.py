@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Numeric, TIMESTAMP
+from sqlalchemy import Column, Integer, String, Float, DateTime, Boolean, ForeignKey
 from app.database import Base
 from datetime import datetime
 
@@ -6,11 +6,20 @@ class Transaction(Base):
     __tablename__ = "transactions"
 
     id = Column(Integer, primary_key=True, index=True)
-    account_id = Column(Integer, ForeignKey("accounts.id", ondelete="CASCADE"))
-    description = Column(String(255))
-    amount = Column(Numeric(15,2))
-    currency = Column(String(3))
-    txn_type = Column(String(10))
-    merchant = Column(String(100))
-    txn_date = Column(TIMESTAMP)
-    created_at = Column(TIMESTAMP, default=datetime.utcnow)
+
+    account_id = Column(Integer, ForeignKey("accounts.id"))
+
+    description = Column(String)
+    category = Column(String, nullable=True)
+
+    amount = Column(Float)
+    currency = Column(String)
+
+    txn_type = Column(String)
+    merchant = Column(String, nullable=True)
+
+    txn_date = Column(DateTime)
+    posted_date = Column(DateTime, nullable=True)   # ⭐ ADD THIS
+
+    is_categorized = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)

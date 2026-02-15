@@ -15,9 +15,9 @@ app.add_middleware(
 
 Base.metadata.create_all(bind=engine)
 
-app.include_router(users.router)
-# app.include_router(accounts.router)
-# app.include_router(transactions.router)
+app.include_router(users.router, prefix="/users", tags=["Users"])
+app.include_router(accounts.router, prefix="/accounts", tags=["Accounts"])
+app.include_router(transactions.router, prefix="/transactions", tags=["Transactions"])
 
 
 @app.get("/")
