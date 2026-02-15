@@ -5,6 +5,7 @@ from app.models.user import User
 from app.schemas.user import UserCreate
 from app.schemas.auth import LoginUser
 from argon2 import PasswordHasher 
+from app.cors.security import create_token,create_refresh_token
 
 
 # -----globally declared ---------
@@ -36,9 +37,14 @@ def login(db:Session,loginuser:LoginUser):
     user_id,hassed_password = result
 
     if not haser.verify(hassed_password,loginuser.password):
-        raise HTTPException(status_code=401,detail="Incorrect Password")
+        raise HTTPException(status_code=401,detail="Incorrect Password")    
+    token = create_token({
+        "user_id":user_id
+    })
+
+    refresh_token = create_refresh_token({"user_id":user_id})
     
-    return {"user_id":user_id}
+    return  refresh_token,token
 
 
 
