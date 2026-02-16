@@ -19,7 +19,7 @@ class Transaction(Base):
     merchant = Column(String, nullable=True)
 
     txn_date = Column(DateTime)
-    posted_date = Column(DateTime, nullable=True)   # ⭐ ADD THIS
+    posted_date = Column(DateTime, nullable=True)  
 
     is_categorized = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
