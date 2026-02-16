@@ -7,7 +7,8 @@ from app.services.auth_service import new_user,login
 from app.cors.security import verify_token,refreh
 
 
-router = APIRouter(prefix="/users", tags=["Users"])
+router = APIRouter(tags=["Users"])
+
 
 @router.post("/register")
 def add_user(user: UserCreate, db: Session = Depends(get_db)):
@@ -22,11 +23,11 @@ def add_user(user: UserCreate, db: Session = Depends(get_db)):
 def login_user(user:LoginUser,db:Session = Depends(get_db)):
     refresh,access = login(db,user)
     return {
-        "access_token":access   ,
-        "token_type":"bearer",
-        "refresh_token":refresh,
-        "token_type":"refresh"
-    }
+    "access_token": access,
+    "refresh_token": refresh,
+    "token_type": "bearer"
+}
+
 @router.get("/profile")
 def profile(user_id:int = Depends(verify_token)):
 
