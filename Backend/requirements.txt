@@ -1,0 +1,27 @@
+# --- Core Framework & Server ---
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+gunicorn==21.2.0
+
+# --- Database & ORM ---
+# Using 2.0.x for modern SQLAlchemy features
+sqlalchemy==2.0.25
+psycopg2-binary==2.9.9
+alembic==1.13.1
+
+# --- Security & Authentication ---
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+email-validator==2.1.0
+
+# --- Milestone 4: Intelligence & Scheduling ---
+# Used for background alerts and daily financial checks
+apscheduler==3.10.4
+pydantic[email]==2.5.3
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# --- Milestone 4: Data Portability ---
+# Used for generating the Monthly Spending PDF reports
+reportlab==4.1.0
