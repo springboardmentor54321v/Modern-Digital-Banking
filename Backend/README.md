@@ -1,3 +1,7 @@
+## 👨‍💻 Backend Team (Team 3)
+
+- Adarsh P R
+- K.R Kavya Sree
 # 🏦 Modern Digital Banking Dashboard (Full Stack API)
 
 ![Version](https://img.shields.io/badge/version-4.0.0-blue)
