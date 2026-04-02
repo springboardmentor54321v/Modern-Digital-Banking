@@ -1,3 +1,0 @@
-DROP INDEX idx_transactions_account_cat_date;
-CREATE INDEX idx_transactions_account_cat_date
-ON transactions(account_id, category, txn_date);
